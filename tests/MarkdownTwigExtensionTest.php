@@ -58,4 +58,92 @@ class MarkdownTwigExtensionTest extends TestCase
 
         self::assertSame(2, $counter);
     }
+
+    public function testMarkdownParseDefaultGitHub() : void
+    {
+        $returnVal = $this->markdownTwigExtension->markdownParse(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke [cigars](/cigars)'
+        );
+
+        self::assertEquals(
+            "<h2>Header 2 ## {#header2}</h2>\n" .
+            "<p>I <del>still</del> used to smoke <a href=\"/cigars\">cigars</a></p>\n",
+            (string) $returnVal
+        );
+    }
+
+    public function testMarkdownParseParagraphDefaultGitHub() : void
+    {
+        $returnVal = $this->markdownTwigExtension->markdownParseParagraph(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke [cigars](/cigars)'
+        );
+
+        self::assertEquals(
+            "## Header 2 ## {#header2}\n\n" .
+            'I <del>still</del> used to smoke <a href="/cigars">cigars</a>',
+            (string) $returnVal
+        );
+    }
+
+    public function testMarkdownParseMarkdownExtra() : void
+    {
+        $returnVal = $this->markdownTwigExtension->markdownParse(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke [cigars](/cigars)',
+            'extra'
+        );
+
+        self::assertEquals(
+            "<h2 id=\"header2\">Header 2</h2>\n" .
+            "<p>I ~~still~~ used to smoke <a href=\"/cigars\">cigars</a></p>\n",
+            (string) $returnVal
+        );
+    }
+
+    public function testMarkdownParseParagraphMarkdownExtra() : void
+    {
+        $returnVal = $this->markdownTwigExtension->markdownParseParagraph(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke [cigars](/cigars)',
+            'extra'
+        );
+
+        self::assertEquals(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke <a href="/cigars">cigars</a>',
+            (string) $returnVal
+        );
+    }
+
+    public function testMarkdownParseMarkdown() : void
+    {
+        $returnVal = $this->markdownTwigExtension->markdownParse(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke [cigars](/cigars)',
+            'markdown'
+        );
+
+        self::assertEquals(
+            "<h2>Header 2 ## {#header2}</h2>\n" .
+            "<p>I ~~still~~ used to smoke <a href=\"/cigars\">cigars</a></p>\n",
+            (string) $returnVal
+        );
+    }
+
+    public function testMarkdownParseParagraphMarkdown() : void
+    {
+        $returnVal = $this->markdownTwigExtension->markdownParseParagraph(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke [cigars](/cigars)',
+            'markdown'
+        );
+
+        self::assertEquals(
+            "## Header 2 ## {#header2}\n\n" .
+            'I ~~still~~ used to smoke <a href="/cigars">cigars</a>',
+            (string) $returnVal
+        );
+    }
 }
