@@ -32,6 +32,11 @@
             "BuzzingPixel\\TwigMarkdown\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "BuzzingPixelTests\\TwigMarkdown\\": "tests"
+        }
+    },
     "config": {
         "bin-compat": "full",
         "optimize-autoloader": true,
