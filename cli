@@ -3,4 +3,19 @@
 
 declare(strict_types=1);
 
-dd('here');
+use corbomite\di\Di;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+use BuzzingPixel\TwigMarkdown\MarkdownTwigExtension;
+
+require __DIR__ . '/vendor/autoload.php';
+
+$twig = new Environment(new FilesystemLoader(__DIR__ . '/work/templates'), [
+    'debug' => true,
+    'cache' => __DIR__ . '/work/cache',
+    'strict_variables' => true,
+]);
+
+$twig->addExtension(Di::diContainer()->get(MarkdownTwigExtension::class));
+
+echo $twig->render('TestTemplate.twig');
