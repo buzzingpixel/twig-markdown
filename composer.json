@@ -1,0 +1,45 @@
+{
+    "name": "buzzingpixel/twig-markdown",
+    "version": "1.0.0",
+    "description": "A Twig Markdown filter",
+    "authors": [
+        {
+            "name": "TJ Draper",
+            "email": "tj@buzzingpixel.com",
+            "homepage": "https://buzzingpixel.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "buzzingpixel/corbomite-di": "^1.2",
+        "twig/twig": "^2.10"
+    },
+    "require-dev": {
+        "codedungeon/phpunit-result-printer": "^0.26.2",
+        "doctrine/coding-standard": "^6.0",
+        "friendsofphp/php-cs-fixer": "^2.14",
+        "phpmd/phpmd": "^2.6",
+        "phpstan/phpstan": "^0.11.5",
+        "phpstan/phpstan-deprecation-rules": "^0.11.0",
+        "phpunit/phpunit": "^8.1",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.4",
+        "symfony/var-dumper": "^4.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "BuzzingPixel\\TwigMarkdown\\": "src"
+        }
+    },
+    "config": {
+        "bin-compat": "full",
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "extra": {
+        "diConfigFilePath": "src/diConfig.php",
+        "twigExtensions": [
+            "BuzzingPixel\\TwigMarkdown\\MarkdownTwigExtension"
+        ]
+    }
+}
