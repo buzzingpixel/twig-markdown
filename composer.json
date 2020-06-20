@@ -1,6 +1,6 @@
 {
     "name": "buzzingpixel/twig-markdown",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A Twig Markdown filter",
     "authors": [
         {
@@ -13,7 +13,7 @@
         "php": ">=7.2",
         "buzzingpixel/corbomite-di": "^1.2",
         "cebe/markdown": "^1.2",
-        "twig/twig": "^2.10"
+        "twig/twig": "^2.10|^3.0"
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.26.2",
