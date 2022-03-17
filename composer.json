@@ -1,7 +1,8 @@
 {
     "name": "buzzingpixel/twig-markdown",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A Twig Markdown filter",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "TJ Draper",
