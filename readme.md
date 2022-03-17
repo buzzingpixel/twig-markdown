@@ -1,18 +1,15 @@
 # Twig Markdown Filter
 
-<p><a href="https://travis-ci.org/buzzingpixel/twig-markdown"><img src="https://travis-ci.org/buzzingpixel/twig-markdown.svg?branch=master"></a></p>
-
 Provides `markdownParse` and `markdownParseParagraph` filters.
 
 ## Installation
 
-If you're using [Corbomite Twig](https://github.com/buzzingpixel/corbomite-twig), the extension will automatically be made available. Otherwise: When instantiating your Twig instance, add `MarkdownTwigExtension` to Twig via the `addExtension()` method. Like so:
+When instantiating your Twig instance, add `MarkdownTwigExtension` to Twig via the `addExtension()` method. Like so:
 
 ```php
 <?php
 declare(strict_types=1);
 
-use corbomite\di\Di;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use BuzzingPixel\TwigMarkdown\MarkdownTwigExtension;
@@ -23,7 +20,7 @@ $twig = new Environment(new FilesystemLoader('/path/to/templates'), [
     'strict_variables' => true,
 ]);
 
-$twig->addExtension(Di::diContainer()->get(MarkdownTwigExtension::class));
+$twig->addExtension($myDiContainer->get(MarkdownTwigExtension::class));
 ```
 
 ## Usage
@@ -46,7 +43,7 @@ Note that some of the examples below pass in the markdown flavor. The default is
 
 ## License
 
-Copyright 2019 BuzzingPixel, LLC
+Copyright 2022 BuzzingPixel, LLC
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
